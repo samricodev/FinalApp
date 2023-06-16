@@ -12,6 +12,11 @@
         android:theme="@style/Theme.FinalApp"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityMenu"
+            android:exported="false"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/Theme.FinalApp.NoActionBar" />
+        <activity
             android:name=".ActivityLogin"
             android:exported="false" />
         <activity

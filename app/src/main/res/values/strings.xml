@@ -7,10 +7,23 @@
     <string name="nav_header_subtitle">El mejor restaurante de mar tierra</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="logout">Logout</string>
+    <string name="about">About Us</string>
+    <string name="acerca_de">Acerca de Nosotros</string>
+    <string name="Acerca_info">El Asador del Mar es un restaurante reconocido y popular situado en una ubicacion privilegiada cerca de la costa.
+
+Se especializa en ofrecer una experiencia culinaria única basada en los sabores del mar y en la autentica cocina del asador. El restaurante brinda a sus clientes una experiencia gastronomica inolvidable.
+
+El Asador del Mar es un restaurante que destaca por su excelencia culinaria, su atencion al detalle y su ambiente acogedor. Si buscas una experiencia gastronómica destacada con los sabores del mar y cocina de asado, no dudes en visitar el Asador del Mar y disfrutar una experiencia inolvidable.
+
+
+    </string>
+
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Consultar Pedido</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

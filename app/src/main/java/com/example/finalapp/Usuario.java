@@ -1,4 +1,5 @@
 package com.example.finalapp;
+
 public class Usuario {
 
     private String nombre, apellido, correo, passwd;

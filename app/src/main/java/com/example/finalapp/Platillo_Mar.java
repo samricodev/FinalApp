@@ -1,4 +1,5 @@
 package com.example.finalapp;
+
 public class Platillo_Mar extends Platillo{
 
     private String categoria;

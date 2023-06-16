@@ -1,4 +1,5 @@
 package com.example.finalapp;
+
 public class Pedido {
 
     private  String noSirve;
@@ -66,5 +67,4 @@ public class Pedido {
     public void setMetodo_pago(String metodo_pago) {
         this.metodo_pago = metodo_pago;
     }
-
 }

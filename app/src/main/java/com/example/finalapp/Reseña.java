@@ -1,4 +1,5 @@
 package com.example.finalapp;
+
 public class Reseña {
 
     private String nombre, titulo, fecha, descripcion;

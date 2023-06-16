@@ -22,4 +22,10 @@
         android:name="com.example.finalapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_pedido"
+        android:name="com.example.finalapp.nav_pedido"
+        android:label="Pedido"
+        tools:layout="@layout/fragment_nav_pedido" />
 </navigation>

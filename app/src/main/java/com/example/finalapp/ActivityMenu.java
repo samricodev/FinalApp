@@ -1,6 +1,9 @@
 package com.example.finalapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
@@ -54,5 +57,27 @@ public class ActivityMenu extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_activity_menu);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        switch(id){
+            case R.id.itemLogout:
+                cerrarSesion();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void cerrarSesion(){
+        SharedPreferences preferencias = getSharedPreferences("user.dat",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferencias.edit();
+        editor.clear();
+        editor.apply();
+
+        Intent logout = new Intent(this, ActivityLogin.class);
+        logout.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK );
+        startActivity(logout);
+        finish();
     }
 }

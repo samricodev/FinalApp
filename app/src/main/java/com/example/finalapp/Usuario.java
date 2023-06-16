@@ -5,12 +5,12 @@ public class Usuario {
     private String nombre, apellido, correo, passwd;
     private int telefono;
 
-    public Usuario(String nombre, String apellido, String correo, String passwd, int telefono) {
+    public Usuario(String nombre, String passwd) {
         this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
+        this.apellido = "apellido";
+        this.correo = "correo";
         this.passwd = passwd;
-        this.telefono = telefono;
+        this.telefono = 33333333;
     }
 
     public Usuario(){

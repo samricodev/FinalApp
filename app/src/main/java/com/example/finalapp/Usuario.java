@@ -1,2 +1,4 @@
-package com.example.finalapp;public class Usuario {
+package com.example.finalapp;
+public class Usuario {
+
 }

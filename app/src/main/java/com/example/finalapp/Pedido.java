@@ -1,8 +1,8 @@
 package com.example.finalapp;
 
-public class Pedido {
+import java.io.Serializable;
 
-    private  String noSirve;
+public class Pedido implements Serializable {
     private int id, telefono;
     private float total;
     private String nombre, domicilio, metodo_pago;

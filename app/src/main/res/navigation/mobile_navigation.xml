@@ -30,6 +30,7 @@
         tools:layout="@layout/fragment_resena" />
 
     <fragment
+
         android:id="@+id/nav_acerca_de"
         android:name="com.example.finalapp.fragment_AboutUs"
         android:label="Acerca de Nosotros"
@@ -40,5 +41,4 @@
         android:name="com.example.finalapp.nav_pedido"
         android:label="Pedido"
         tools:layout="@layout/fragment_nav_pedido" />
-
 </navigation>

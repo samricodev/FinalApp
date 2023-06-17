@@ -75,7 +75,9 @@ public class nav_pedido extends Fragment {
         tarjeta = (RadioButton) view.findViewById(R.id.rbtnTDDTDC);
         hacer_pedido = (Button) view.findViewById(R.id.btnHacerPedido);
 
-        hacer_pedido.setOnClickListener(v ->  guardarPedido(view));
+
+        hacer_pedido.setOnClickListener(v -> guardarPedido(view) );
+
 
         return view;
     }
@@ -84,26 +86,46 @@ public class nav_pedido extends Fragment {
 
         Pedido pedido = new Pedido();
 
-        pedido.setId(Integer.parseInt(id.getText().toString()));
-        pedido.setNombre(nombre.getText().toString());
-        pedido.setDomicilio(domicilio.getText().toString());
-        pedido.setTelefono(Long.parseLong(telefono.getText().toString()));
-        pedido.setTotal(Float.parseFloat(total.getText().toString()));
-        String pago = "";
-        if (efectivo.isChecked()){
-            pedido.setMetodo_pago("Efectivo.");
-        } else if (tarjeta.isChecked()) {
-            pedido.setMetodo_pago("Tarjeta");
+        String nombre_p = (nombre.getText().toString());
+        String domicilio_p = domicilio.getText().toString();
+        String telefono_p = telefono.getText().toString();
+        String total_p = total.getText().toString();
+
+        //validacion de campos
+        if (nombre_p.isEmpty() || domicilio_p.isEmpty() || telefono_p.isEmpty()
+        || total_p.isEmpty() || (!efectivo.isChecked() && !tarjeta.isChecked())) {
+            Toast.makeText(getActivity(), "CAMPOS INCOMPLETOS", Toast.LENGTH_SHORT).show();
+            limpiar();
         }else {
-            Toast.makeText(getActivity(), "No se ha seleccionado el metodo de pago.", Toast.LENGTH_SHORT).show();
+            pedido.setId(Integer.parseInt(id.getText().toString()));
+            pedido.setNombre(nombre.getText().toString());
+            pedido.setDomicilio(domicilio.getText().toString());
+            pedido.setTelefono(Long.parseLong(telefono.getText().toString()));
+            pedido.setTotal(Float.parseFloat(total.getText().toString()));
+            String pago = "";
+            if (efectivo.isChecked()){
+                pedido.setMetodo_pago("Efectivo.");
+            } else if (tarjeta.isChecked()) {
+                pedido.setMetodo_pago("Tarjeta");
+            }else {
+                Toast.makeText(getActivity(), "No se ha seleccionado el metodo de pago.", Toast.LENGTH_SHORT).show();
+            }
+            Intent intent = new Intent(getActivity(), ActivityMenu.class);
+            intent.putExtra("pedido",pedido);
+            Toast.makeText(getActivity(), "Pedido Realizado.", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+            getActivity().finish();
         }
+    }//guardarPedido
 
-        Intent intent = new Intent(getActivity(), ActivityMenu.class);
-        intent.putExtra("pedido",pedido);
-        Toast.makeText(getActivity(), "Pedido Realizado.", Toast.LENGTH_SHORT).show();
-        startActivity(intent);
-        getActivity().finish();
-
-    }
+    public void limpiar(){
+        nombre.setText("");
+        domicilio.setText("");
+        id.setText("");
+        telefono.setText("");
+        total.setText("");
+        tarjeta.setChecked(false);
+        efectivo.setChecked(false);
+    }//limpiar
 
 }

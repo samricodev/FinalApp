@@ -3,11 +3,12 @@ package com.example.finalapp;
 import java.io.Serializable;
 
 public class Pedido implements Serializable {
-    private int id, telefono;
+    private int id;
+    private long telefono;
     private float total;
     private String nombre, domicilio, metodo_pago;
 
-    public Pedido(int id, int telefono, float total, String nombre, String domicilio, String metodo_pago) {
+    public Pedido(int id, long telefono, float total, String nombre, String domicilio, String metodo_pago) {
         this.id = id;
         this.telefono = telefono;
         this.total = total;
@@ -28,11 +29,11 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 

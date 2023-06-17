@@ -75,24 +75,19 @@ public class nav_pedido extends Fragment {
         tarjeta = (RadioButton) view.findViewById(R.id.rbtnTDDTDC);
         hacer_pedido = (Button) view.findViewById(R.id.btnHacerPedido);
 
-        hacer_pedido.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                guardarPedido();
-            }
-        });
+        hacer_pedido.setOnClickListener(v ->  guardarPedido(view));
 
         return view;
     }
 
-    public void guardarPedido(){
+    public void guardarPedido(View view){
 
         Pedido pedido = new Pedido();
 
         pedido.setId(Integer.parseInt(id.getText().toString()));
         pedido.setNombre(nombre.getText().toString());
         pedido.setDomicilio(domicilio.getText().toString());
-        pedido.setTelefono(Integer.parseInt(telefono.getText().toString()));
+        pedido.setTelefono(Long.parseLong(telefono.getText().toString()));
         pedido.setTotal(Float.parseFloat(total.getText().toString()));
         String pago = "";
         if (efectivo.isChecked()){

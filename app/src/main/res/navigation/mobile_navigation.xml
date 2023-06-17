@@ -33,7 +33,7 @@
 
         android:id="@+id/nav_acerca_de"
         android:name="com.example.finalapp.fragment_AboutUs"
-        android:label="fragment__about_us"
+        android:label="Acerca de Nosotros"
         tools:layout="@layout/fragment__about_us" />
 
     <fragment

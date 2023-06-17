@@ -8,6 +8,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="logout">Logout</string>
     <string name="about">About Us</string>
+    <string name="pedido">Pedido</string>
+    <string name="resena">Reseña</string>
     <string name="acerca_de">Acerca de Nosotros</string>
     <string name="Acerca_info">El Asador del Mar es un restaurante reconocido y popular situado en una ubicacion privilegiada cerca de la costa.
 

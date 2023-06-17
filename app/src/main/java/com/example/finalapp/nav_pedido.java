@@ -75,7 +75,9 @@ public class nav_pedido extends Fragment {
         tarjeta = (RadioButton) view.findViewById(R.id.rbtnTDDTDC);
         hacer_pedido = (Button) view.findViewById(R.id.btnHacerPedido);
 
+
         hacer_pedido.setOnClickListener(v -> guardarPedido(view) );
+
 
         return view;
     }
@@ -91,7 +93,7 @@ public class nav_pedido extends Fragment {
 
         //validacion de campos
         if (nombre_p.isEmpty() || domicilio_p.isEmpty() || telefono_p.isEmpty()
-        || total_p.isEmpty() || (!efectivo.isChecked() && !tarjeta.isChecked())){
+        || total_p.isEmpty() || (!efectivo.isChecked() && !tarjeta.isChecked())) {
             Toast.makeText(getActivity(), "CAMPOS INCOMPLETOS", Toast.LENGTH_SHORT).show();
             limpiar();
         }else {
@@ -126,6 +128,4 @@ public class nav_pedido extends Fragment {
         efectivo.setChecked(false);
     }//limpiar
 
-}//onCreateView
-
-//comentario
+}

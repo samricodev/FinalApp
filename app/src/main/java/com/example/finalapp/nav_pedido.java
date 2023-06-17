@@ -1,10 +1,19 @@
 package com.example.finalapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Toast;
+
+import java.util.PrimitiveIterator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,15 +31,11 @@ public class nav_pedido extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private EditText id, nombre,domicilio,telefono, total;
+    private RadioButton efectivo, tarjeta;
+    private Pedido pedido;
+    private Button hacer_pedido;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment nav_pedido.
-     */
     // TODO: Rename and change types and number of parameters
     public static nav_pedido newInstance(String param1, String param2) {
         nav_pedido fragment = new nav_pedido();
@@ -51,6 +56,7 @@ public class nav_pedido extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -58,6 +64,51 @@ public class nav_pedido extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nav_pedido, container, false);
+        View view = inflater.inflate(R.layout.fragment_nav_pedido, container, false);
+
+        id = (EditText) view.findViewById(R.id.txtIdPedido);
+        nombre = (EditText) view.findViewById(R.id.txtNombrePedido);
+        domicilio = (EditText) view.findViewById(R.id.txtDomicilioPedido);
+        telefono = (EditText) view.findViewById(R.id.txtTelefonoPedido);
+        total = (EditText) view.findViewById(R.id.txtTotalPedido);
+        efectivo = (RadioButton) view.findViewById(R.id.rbtnEfectivo);
+        tarjeta = (RadioButton) view.findViewById(R.id.rbtnTDDTDC);
+        hacer_pedido = (Button) view.findViewById(R.id.btnHacerPedido);
+
+        hacer_pedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                guardarPedido();
+            }
+        });
+
+        return view;
     }
+
+    public void guardarPedido(){
+
+        Pedido pedido = new Pedido();
+
+        pedido.setId(Integer.parseInt(id.getText().toString()));
+        pedido.setNombre(nombre.getText().toString());
+        pedido.setDomicilio(domicilio.getText().toString());
+        pedido.setTelefono(Integer.parseInt(telefono.getText().toString()));
+        pedido.setTotal(Float.parseFloat(total.getText().toString()));
+        String pago = "";
+        if (efectivo.isChecked()){
+            pedido.setMetodo_pago("Efectivo.");
+        } else if (tarjeta.isChecked()) {
+            pedido.setMetodo_pago("Tarjeta");
+        }else {
+            Toast.makeText(getActivity(), "No se ha seleccionado el metodo de pago.", Toast.LENGTH_SHORT).show();
+        }
+
+        Intent intent = new Intent(getActivity(), ActivityMenu.class);
+        intent.putExtra("pedido",pedido);
+        Toast.makeText(getActivity(), "Pedido Realizado.", Toast.LENGTH_SHORT).show();
+        startActivity(intent);
+        getActivity().finish();
+
+    }
+
 }

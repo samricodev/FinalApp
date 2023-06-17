@@ -21,6 +21,10 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
         <item
+            android:id="@+id/nav_resena"
+            android:icon="@android:drawable/btn_star_big_on"
+            android:title="Reseña" />
+        <item
             android:id="@+id/nav_acerca_de"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="@string/about" />

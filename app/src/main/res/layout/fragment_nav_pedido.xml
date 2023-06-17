@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nav_pedido" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tituloHacerPedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="152dp"
+            android:layout_marginTop="28dp"
+            android:text="Pedido"
+            android:textColor="#070707"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/txtIdPedido"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="32dp"
+            android:autoText="true"
+            android:background="@color/color_secundary"
+            android:backgroundTint="@color/color_secundary"
+            android:elegantTextHeight="false"
+            android:ems="10"
+            android:hint="  Id"
+            android:inputType="number"
+            android:textAlignment="inherit"
+            android:textColor="#121111"
+            android:textColorHighlight="#070707"
+            android:textColorHint="#0C0C0C"
+            android:textDirection="firstStrong"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tituloHacerPedido" />
+
+        <EditText
+            android:id="@+id/txtNombrePedido"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="36dp"
+            android:background="@color/color_secundary"
+            android:backgroundTint="@color/color_secundary"
+            android:ems="10"
+            android:hint="  Nombre"
+            android:inputType="textPersonName"
+            android:textColor="#0B0A0A"
+            android:textColorHint="#101010"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtIdPedido" />
+
+        <EditText
+            android:id="@+id/txtDomicilioPedido"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="36dp"
+            android:background="@color/color_secundary"
+            android:backgroundTint="@color/color_secundary"
+            android:ems="10"
+            android:hint="  Domicilio"
+            android:inputType="textPersonName"
+            android:textColor="#0E0E0E"
+            android:textColorHint="#0C0C0C"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombrePedido" />
+
+        <EditText
+            android:id="@+id/txtTelefonoPedido"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="36dp"
+            android:background="@color/color_secundary"
+            android:backgroundTint="@color/color_secundary"
+            android:ems="10"
+            android:hint="  Telefono"
+            android:inputType="textPersonName"
+            android:textColor="#0B0B0B"
+            android:textColorHint="#050505"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDomicilioPedido" />
+
+        <TextView
+            android:id="@+id/txtMetodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="36dp"
+            android:text="Metodo de pago:"
+            android:textColor="#0C0C0C"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTelefonoPedido" />
+
+        <RadioGroup
+            android:id="@+id/rGroup"
+            android:layout_width="208dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMetodo">
+
+            <RadioButton
+                android:id="@+id/rbtnEfectivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Efectivo"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/rbtnTDDTDC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TDD/TDC"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/txtTotalPedido"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="36dp"
+            android:background="@color/color_secundary"
+            android:backgroundTint="@color/color_secundary"
+            android:ems="10"
+            android:hint="  Total"
+            android:inputType="number"
+            android:textColor="#0C0C0C"
+            android:textColorHint="#101010"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rGroup" />
+
+        <Button
+            android:id="@+id/btnHacerPedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="133dp"
+            android:layout_marginTop="26dp"
+            android:text="Hacer Pedido"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTotalPedido" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

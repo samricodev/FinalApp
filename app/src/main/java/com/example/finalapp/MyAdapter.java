@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-    private List<String> dataList;
+    private List<String> dataListTitulo;
+    private List<String> dataListDesc;
 
     private Context context;
 
-    public MyAdapter(List<String> dataList ,Context context) {
-        this.dataList = dataList;
+    public MyAdapter(List<String> dataList, List<String> dataListDesc ,Context context) {
+        this.dataListTitulo = dataList;
+        this.dataListDesc = dataListDesc;
         this.context = context;
     }
 
@@ -25,14 +27,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        String item = dataList.get(position);
-        holder.textViewItem.setText(item);
-        holder.textViewDescripcion.setText(item);
+        String itemTituolo = dataListTitulo.get(position);
+        String itemDesc = dataListDesc.get(position);
+        holder.textViewItem.setText(itemTituolo);
+        holder.textViewDescripcion.setText(itemDesc);
 
     }
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return dataListTitulo.size();
     }
 }

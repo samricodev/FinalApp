@@ -1,6 +1,9 @@
 package com.example.finalapp;
 
 import android.app.Activity;
+
+import android.content.Intent;
+
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
@@ -15,6 +18,9 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+
+import java.util.PrimitiveIterator;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,7 +82,9 @@ public class nav_pedido extends Fragment {
         tarjeta = (RadioButton) view.findViewById(R.id.rbtnTDDTDC);
         hacer_pedido = (Button) view.findViewById(R.id.btnHacerPedido);
 
+
         hacer_pedido.setOnClickListener(v -> guardarPedido(view) );
+
 
         return view;
     }
@@ -131,6 +139,7 @@ public class nav_pedido extends Fragment {
             limpiar();
         }
     }//guardarPedido
+
 
     public void limpiar(){
         nombre.setText("");

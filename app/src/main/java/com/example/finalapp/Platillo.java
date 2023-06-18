@@ -58,4 +58,6 @@ public class Platillo {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+
 }

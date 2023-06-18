@@ -9,9 +9,10 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private List<String> dataList;
+
     private Context context;
 
-    public MyAdapter(List<String> dataList, Context context) {
+    public MyAdapter(List<String> dataList ,Context context) {
         this.dataList = dataList;
         this.context = context;
     }
@@ -26,6 +27,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {
         String item = dataList.get(position);
         holder.textViewItem.setText(item);
+        holder.textViewDescripcion.setText(item);
+
     }
 
     @Override

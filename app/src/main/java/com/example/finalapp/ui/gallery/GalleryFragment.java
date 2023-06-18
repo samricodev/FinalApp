@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,12 +40,16 @@ public class GalleryFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recyclerMenu);
 
         dataList = new ArrayList<>();
-        dataList.add("Carne en su jugo Camarones empanizados Arrachera");
-        dataList.add("150  200 500");
+        dataList.add("Carne en su jugo");
+        dataList.add("Birria");
+        dataList.add("Camarones a la diabla");
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        adapter = new MyAdapter(dataList, this.getContext());
+
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+
+        adapter = new MyAdapter(dataList,this.getContext());
         recyclerView.setAdapter(adapter);
 
         return root;

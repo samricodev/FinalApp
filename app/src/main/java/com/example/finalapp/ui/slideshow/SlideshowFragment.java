@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,11 +15,14 @@ import com.example.finalapp.Pedido;
 import com.example.finalapp.R;
 import com.example.finalapp.databinding.FragmentSlideshowBinding;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class SlideshowFragment extends Fragment {
 
     private TextView info_pedido;
-    private Pedido pedido;
-
     private FragmentSlideshowBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -29,21 +33,43 @@ public class SlideshowFragment extends Fragment {
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        pedido = (Pedido) getActivity().getIntent().getSerializableExtra("pedido");
         info_pedido = (TextView) root.findViewById(R.id.txtInfoPedido);
 
-        String pedidoText = "Id: " + pedido.getId() +
-                "\nNombre: " + pedido.getNombre() +
-                "\nDomicilio: " + pedido.getDomicilio() +
-                "\nTelefono: " + pedido.getTelefono() +
-                "\nTotal: " + pedido.getTotal() +
-                "\nMetodo de pago: " + pedido.getMetodo_pago();
+        abrirArchivo();
 
-        info_pedido.setText(pedidoText);
-
-      /*  Pedido pedido = getArguments().getParcelable("pedido");
-*/
         return root;
+    }
+
+    private void abrirArchivo(){
+        String archivos [] = getActivity().fileList();
+        if(existeArchivo(archivos, "pedidos.txt")){
+            try{
+                InputStreamReader archivoInterno = new InputStreamReader(getActivity().openFileInput("pedidos.txt"));
+                BufferedReader leerArchivo = new BufferedReader(archivoInterno);
+                String linea = leerArchivo.readLine();
+                String textoLeido = "";
+                while( linea != null){
+                    textoLeido += linea + '\n';
+                    linea = leerArchivo.readLine();
+                }
+                leerArchivo.close();
+                archivoInterno.close();
+                info_pedido.setText(textoLeido);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                Toast.makeText(this.getContext(), "Error al leer el archivo.", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this.getContext(), "El archivo no existe.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean existeArchivo(String[] archivos, String file) {
+        for (int i = 0; i < archivos.length; i++)
+            if(file.equals(archivos[i]))
+                return true;
+        return false;
     }
 
     @Override

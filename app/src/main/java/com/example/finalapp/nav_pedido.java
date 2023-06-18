@@ -1,10 +1,9 @@
 package com.example.finalapp;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import java.util.PrimitiveIterator;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +34,7 @@ public class nav_pedido extends Fragment {
     private String mParam2;
     private EditText id, nombre,domicilio,telefono, total;
     private RadioButton efectivo, tarjeta;
-    private Pedido pedido;
+    String pedidoText = "";
     private Button hacer_pedido;
 
     // TODO: Rename and change types and number of parameters
@@ -75,9 +76,7 @@ public class nav_pedido extends Fragment {
         tarjeta = (RadioButton) view.findViewById(R.id.rbtnTDDTDC);
         hacer_pedido = (Button) view.findViewById(R.id.btnHacerPedido);
 
-
         hacer_pedido.setOnClickListener(v -> guardarPedido(view) );
-
 
         return view;
     }
@@ -110,11 +109,26 @@ public class nav_pedido extends Fragment {
             }else {
                 Toast.makeText(getActivity(), "No se ha seleccionado el metodo de pago.", Toast.LENGTH_SHORT).show();
             }
-            Intent intent = new Intent(getActivity(), ActivityMenu.class);
-            intent.putExtra("pedido",pedido);
-            Toast.makeText(getActivity(), "Pedido Realizado.", Toast.LENGTH_SHORT).show();
-            startActivity(intent);
-            getActivity().finish();
+
+            pedidoText += "Id: " + pedido.getId() +
+                    "\nNombre: " + pedido.getNombre() +
+                    "\nDomicilio: " + pedido.getDomicilio() +
+                    "\nTelefono: " + pedido.getTelefono() +
+                    "\nTotal: " + pedido.getTotal() +
+                    "\nMetodo de pago: " + pedido.getMetodo_pago();
+
+            try {
+                OutputStreamWriter archivoInterno = new OutputStreamWriter(getActivity().openFileOutput("pedidos.txt", Activity.MODE_PRIVATE));
+                archivoInterno.write(pedidoText);
+                archivoInterno.flush();
+                archivoInterno.close();
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                Toast.makeText(this.getContext(), "Error al escribir en el archivo", Toast.LENGTH_SHORT).show();
+            }
+            Toast.makeText(getActivity(), "Pedido guardado", Toast.LENGTH_SHORT).show();
+            limpiar();
         }
     }//guardarPedido
 

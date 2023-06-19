@@ -46,8 +46,8 @@ public class GalleryFragment extends Fragment {
 
 
 
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        //recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         adapter = new MyAdapter(dataList,this.getContext());
         recyclerView.setAdapter(adapter);
